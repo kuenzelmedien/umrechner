@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Umrechner</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/style.min.css" />
+    <link rel="stylesheet" href="css/aos.css" />
+  </head>
+  <body onload="addCategories(); sourceUnits(); goalUnits()">
+    <h1>Umrechner</h1>
+    <p>
+      Mit diesem Tool können Sie verschiedenste Einheiten umrechnen. Bitte
+      wählen Sie zuerst eine Kategorie:
+    </p>
+    <select
+      name="category"
+      id="category-selector"
+      onchange="changeCategory(); sourceUnits(); goalUnits()"
+    ></select>
+    <h2 id="category-heading">Gewichte</h2>
+    <form>
+      <input type="number" name="source-value" id="source-value" />
+      <select name="source-unit" id="source-unit"></select>
+    </form>
+    <form>
+      <input type="number" name="goal-value" id="goal-value" />
+      <select name="goal-unit" id="goal-unit"></select>
+    </form>
+
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
