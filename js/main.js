@@ -21,7 +21,6 @@ function changeCategory() {
     var category = categorySelector.options[categorySelector.selectedIndex].text;
     var categoryHeading = document.getElementById("category-heading");
     categoryHeading.innerHTML = category;
-    return category;
 }
 
 // Einheiten beim Wechseln der Kategorie ändern
