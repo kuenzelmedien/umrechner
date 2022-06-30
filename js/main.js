@@ -3,6 +3,7 @@ var categories = {};
 categories["Gewichte"] = ["Kilogramm (kg)", "Gramm (g)", "Milligramm (mg)", "Tonnen (t)", "Megatonnen (mt)"];
 categories["Längen"] = ["Meter (m)", "Kilometer (km)", "Zentimeter (cm)", "Millimeter (mm)"];
 categories["Temperaturen"] = ["Celsius (°C)", "Fahrenheit (°F)", "Kelvin (K)", "Rankine (°Rank)", "Réaumure (°R)"];
+categories["Zeiten"] = ["Tage", "Stunden", "Minuten", "Sekunden", "Millisekunden"];
 
 // Dropdown für Kategorieauswahl befüllen
 function addCategories() {
@@ -39,3 +40,13 @@ function units() {
         goalUnit.appendChild(el.cloneNode(true));
     });
 }
+
+// Werte von Quelleingabe zu Zieleingabe kopieren.
+
+var sourceValue = document.getElementById("source-value");
+var goalValue = document.getElementById("goal-value");
+
+sourceValue.onkeyup = function () {
+    var sourceValue2 = sourceValue.value;
+    goalValue.value = sourceValue2;
+};
