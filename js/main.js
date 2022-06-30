@@ -28,25 +28,34 @@ function changeCategory() {
 function units() {
     var categorySelector = document.getElementById("category-selector");
     var category = categorySelector.options[categorySelector.selectedIndex].text;
-    var sourceUnit = document.getElementById("source-unit");
-    var goalUnit = document.getElementById("goal-unit");
-    sourceUnit.innerHTML = "";
-    goalUnit.innerHTML = "";
+    var sourceUnitSelector = document.getElementById("source-unit");
+    var goalUnitSelector = document.getElementById("goal-unit");
+    sourceUnitSelector.innerHTML = "";
+    goalUnitSelector.innerHTML = "";
     categories[category].forEach((cat) => {
         var el = document.createElement("option").cloneNode(true);
         el.textContent = cat;
         el.value = cat;
-        sourceUnit.appendChild(el);
-        goalUnit.appendChild(el.cloneNode(true));
+        sourceUnitSelector.appendChild(el);
+        goalUnitSelector.appendChild(el.cloneNode(true));
     });
 }
 
 // Werte von Quelleingabe zu Zieleingabe kopieren.
+var sourceValueInput = document.getElementById("source-value");
+var goalValueInput = document.getElementById("goal-value");
 
-var sourceValue = document.getElementById("source-value");
-var goalValue = document.getElementById("goal-value");
-
-sourceValue.onkeyup = function () {
-    var sourceValue2 = sourceValue.value;
-    goalValue.value = sourceValue2;
+sourceValueInput.onkeyup = function () {
+    var sourceUnitSelector = document.getElementById("source-unit");
+    var sourceUnit = sourceUnitSelector.options[sourceUnitSelector.selectedIndex].text;
+    var goalUnitSelector = document.getElementById("goal-unit");
+    var goalUnit = goalUnitSelector.options[goalUnitSelector.selectedIndex].text;
+    var sourceValue = sourceValueInput.value;
+    sourceValue.replace(",", ".");
+    if (sourceUnit == goalUnit) {
+        goalValueInput.value = sourceValue;
+    }
+    if (sourceUnit == "Kilogramm (kg)" && goalUnit == "Gramm (g)") {
+        goalValueInput.value = parseInt(sourceValue * 1000);
+    }
 };
